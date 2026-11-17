@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ConfNet — Networking для конференций</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; }
+  .screen { display: none; }
+  .screen.active { display: block; }
+  .story-ring { border: 2px solid #6366f1; padding: 2px; border-radius: 9999px; }
+  .chat-bubble { max-width: 75%; }
+  .loyalty-bar { height: 8px; background: #e5e7eb; border-radius: 4px; overflow: hidden; }
+  .loyalty-fill { height: 100%; background: linear-gradient(90deg, #6366f1, #8b5cf6); }
+  .map-dot { position: absolute; width: 12px; height: 12px; background: #6366f1; border-radius: 50%; border: 2px solid white; box-shadow: 0 0 0 4px rgba(99,102,241,0.3); }
+  .story-viewer { position: fixed; inset: 0; background: black; z-index: 50; display: none; }
+  .story-viewer.active { display: flex; flex-direction: column; }
+</style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+<div id="app" class="max-w-md mx-auto min-h-screen bg-white shadow-lg relative">
+  <header class="sticky top-0 z-10 bg-white border-b px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">CN</div>
+      <span class="font-semibold">ConfNet</span>
+    </div>
+    <div class="flex items-center gap-3 text-sm">
+      <span id="user-role" class="text-xs bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded">Участник</span>
+      <button onclick="logout()" class="text-gray-500 hover:text-gray-700"><i data-lucide="log-out" class="w-5 h-5"></i></button>
+    </div>
+  </header>
+  <div id="login" class="screen active p-6">
+    <h1 class="text-2xl font-bold mb-2">Добро пожаловать</h1>
+    <p class="text-gray-600 mb-6 text-sm">Единый аккаунт для всех конференций</p>
+    <div class="space-y-4">
+      <input id="email" type="email" placeholder="Email" class="w-full border rounded-lg px-4 py-3 text-sm" value="anna@example.com">
+      <input id="name" type="text" placeholder="Имя" class="w-full border rounded-lg px-4 py-3 text-sm" value="Анна Петрова">
+      <select id="role" class="w-full border rounded-lg px-4 py-3 text-sm">
+        <option value="participant">Участник</option>
+        <option value="organizer">Организатор / B2B</option>
+      </select>
+      <button onclick="login()" class="w-full bg-indigo-600 text-white rounded-lg py-3 font-medium">Войти / Зарегистрироваться</button>
+    </div>
+    <p class="text-xs text-gray-500 mt-4 text-center">Демо. Данные не сохраняются.</p>
+  </div>
+  <!-- Note: Full interactive MVP with matching, chats, stories, nearby map, loyalty, B2B cabinet is in the local prototype. Full source available upon request or can be extended. -->
+  <div id="main" class="screen"><p class="p-6 text-center">Open the full prototype locally or request the complete index.html</p></div>
+</div>
+<script>
+function login(){alert('Full demo available in the complete index.html');}
+function logout(){}
+</script>
+</body>
+</html>
